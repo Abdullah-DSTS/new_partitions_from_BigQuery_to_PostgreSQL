@@ -1,0 +1,1 @@
+# new_partitions_from_BigQuery_to_PostgreSQL
