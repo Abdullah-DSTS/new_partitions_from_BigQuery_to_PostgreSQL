@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  bq-to-pg-transfer:
+    build: .
+    container_name: bq-to-pg-transfer
+    restart: unless-stopped
+    environment:
+      - TZ=UTC
+    volumes:
+      # Mount credentials directory for service account files
+      - ./credentials:/app/credentials:ro
+      # Mount config directory for configuration
+      - ./config:/app/config:ro
+    # Optional: Add network if connecting to external PostgreSQL
+    # networks:
+    #   - postgres-network
+    
+    # Optional: Add PostgreSQL service if running locally
+    # depends_on:
+    #   - postgres
+
+# Optional: PostgreSQL service for local development
+# services:
+#   postgres:
+#     image: postgres:15
+#     container_name: postgres
+#     restart: unless-stopped
+#     environment:
+#       POSTGRES_DB: your_database
+#       POSTGRES_USER: your_username
+#       POSTGRES_PASSWORD: your_password
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     networks:
+#       - postgres-network
+
+# volumes:
+#   postgres_data:
+
+# networks:
+#   postgres-network:
+#     driver: bridge 

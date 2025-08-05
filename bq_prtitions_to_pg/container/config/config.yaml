@@ -1,0 +1,26 @@
+# Configuration file for BigQuery to PostgreSQL partition transfer
+
+# BigQuery Configuration
+bigquery:
+  project_id: ""
+  dataset_id: ""
+  service_account_path: "credentials/bq_service_account.json"
+
+# Google Cloud Storage Configuration
+gcs:
+  bucket_name: ""
+  service_account_path: "credentials/gcs_service_account.json"
+
+# PostgreSQL Configuration
+postgresql:
+  host: ""
+  port: 5432
+  database: ""
+  username: ""
+  password: ""
+  schema: "public"
+
+# Transfer Configuration
+transfer:
+  batch_size: 1000
+  max_workers: 4 
